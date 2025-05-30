@@ -1,63 +1,74 @@
-const botao = document.getElementById("botaoClique");
-const contador = document.getElementById("contador");
-const temporizador = document.getElementById("temporizador");
-const telaInicio = document.getElementById("telaInicio");
-const comecar = document.getElementById("comecar");
-const telaFinal = document.getElementById("telaFinal");
-const pontuacaoFinal = document.getElementById("pontuacaoFinal");
-
-let cliques = 0;
+let contador = 0;
 let tempo = 10;
 let intervalo;
-let jogoAtivo = false;
+let iniciado = false;
+let movimento;
 
-comecar.addEventListener("click", () => {
-  telaInicio.style.display = "none";
-  iniciarJogo();
-});
+const contadorEl = document.getElementById("contador");
+const tempoEl = document.getElementById("temporizador");
+const botao = document.getElementById("botaoClique");
+const resultado = document.getElementById("resultadoFinal");
+const botaoReiniciar = document.getElementById("reiniciar");
 
-function iniciarJogo() {
-  jogoAtivo = true;
-  intervalo = setInterval(() => {
-    tempo--;
-    atualizarTempo();
-    if (tempo <= 0) {
-      finalizarJogo();
-    }
-  }, 1000);
-  atualizarTempo();
-  moverBotao();
+function formatarTempo(segundos) {
+  const min = String(Math.floor(segundos / 60)).padStart(2, "0");
+  const seg = String(segundos % 60).padStart(2, "0");
+  return `${min}:${seg}`;
 }
 
-function atualizarTempo() {
-  temporizador.textContent = `00:${tempo < 10 ? "0" + tempo : tempo}`;
+function moverBotao() {
+  const maxX = window.innerWidth - botao.offsetWidth;
+  const maxY = window.innerHeight - botao.offsetHeight - 100;
+
+  const novoX = Math.random() * maxX;
+  const novoY = Math.random() * maxY;
+
+  botao.style.left = `${novoX}px`;
+  botao.style.top = `${novoY}px`;
+}
+
+function iniciarTemporizador() {
+  intervalo = setInterval(() => {
+    tempo--;
+    tempoEl.textContent = formatarTempo(tempo);
+    if (tempo <= 0) {
+      clearInterval(intervalo);
+      clearInterval(movimento);
+      botao.disabled = true;
+      resultado.style.display = "block";
+      resultado.innerHTML = `🔥 Você clicou <strong>${contador}</strong> vezes!`;
+    }
+  }, 1000);
+
+  movimento = setInterval(moverBotao, 700);
 }
 
 botao.addEventListener("click", () => {
-  if (!jogoAtivo) return;
-  cliques++;
-  contador.textContent = cliques;
+  if (!iniciado) {
+    iniciado = true;
+    iniciarTemporizador();
+  }
+
+  if (tempo > 0) {
+    contador++;
+    contadorEl.textContent = contador;
+  }
+});
+
+botaoReiniciar.addEventListener("click", () => {
+  clearInterval(intervalo);
+  clearInterval(movimento);
+  contador = 0;
+  tempo = 10;
+  iniciado = false;
+  contadorEl.textContent = "0";
+  tempoEl.textContent = formatarTempo(tempo);
+  resultado.style.display = "none";
+  botao.disabled = false;
   moverBotao();
 });
 
-function moverBotao() {
-  const larguraJanela = window.innerWidth;
-  const alturaJanela = window.innerHeight;
-  const larguraBotao = botao.offsetWidth;
-  const alturaBotao = botao.offsetHeight;
-
-  const posX = Math.random() * (larguraJanela - larguraBotao);
-  const posY = Math.random() * (alturaJanela - alturaBotao);
-
-  botao.style.left = `${posX}px`;
-  botao.style.top = `${posY}px`;
-}
-
-function finalizarJogo() {
-  jogoAtivo = false;
-  clearInterval(intervalo);
-  botao.style.display = "none";
-  telaFinal.style.display = "flex";
-  pontuacaoFinal.textContent = cliques;
-}
-
+// Posição inicial do botão
+window.onload = () => {
+  moverBotao();
+};
