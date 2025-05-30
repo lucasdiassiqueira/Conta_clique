@@ -1,5 +1,5 @@
 let contador = 0;
-let tempo = 60;
+let tempo = 10;
 let intervalo;
 let iniciado = false;
 
@@ -10,8 +10,8 @@ const resultado = document.getElementById("resultadoFinal");
 const botaoReiniciar = document.getElementById("reiniciar");
 
 function formatarTempo(segundos) {
-  const min = String(Math.floor(segundos / 60)).padStart(2, "0");
-  const seg = String(segundos % 60).padStart(2, "0");
+  const min = String(Math.floor(segundos / 10)).padStart(2, "0");
+  const seg = String(segundos % 10).padStart(2, "0");
   return `${min}:${seg}`;
 }
 
