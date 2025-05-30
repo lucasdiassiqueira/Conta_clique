@@ -1,61 +1,83 @@
 body {
   background-color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   margin: 0;
-  gap: 20px;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+#fundo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  height: 90vh;
+  background-color: white;
+  border-radius: 20px;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
 }
 
 #temporizador {
-  font-size: 4rem;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 5rem;
   font-weight: bold;
-  margin-top: 10px;
+  z-index: 2;
 }
 
 #contador {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-#quadrado {
-  background-color: white;
-  padding: 40px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 4rem;
+  z-index: 2;
 }
 
 #botaoClique {
-  background-color: rgb(17, 150, 190);
-  color: black;
-  border: none;
+  position: absolute;
   padding: 20px 40px;
   font-size: 1.5rem;
-  border-radius: 8px;
+  background-color: limegreen;
+  color: black;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
+  z-index: 3;
+  transition: top 0.3s ease, left 0.3s ease;
+  box-shadow: 0 0 20px lime;
 }
 
 #reiniciar {
-  margin-top: 10px;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 10px 20px;
   font-size: 1.2rem;
+  background-color: #222;
+  color: white;
   border: none;
   border-radius: 8px;
-  background-color: #444;
-  color: white;
   cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 0 10px #444;
 }
 
 #resultadoFinal {
-  display: none;
-  margin-top: 20px;
-  font-size: 1.8rem;
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
   color: #00ffcc;
   text-align: center;
+  z-index: 2;
+  display: none;
 }
