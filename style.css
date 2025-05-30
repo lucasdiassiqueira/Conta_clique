@@ -8,18 +8,18 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
-}
-
-#contador {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  gap: 20px;
 }
 
 #temporizador {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 1.5rem;
+  font-size: 4rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#contador {
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
 
 #quadrado {
@@ -41,11 +41,21 @@ body {
   cursor: pointer;
 }
 
+#reiniciar {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+}
+
 #resultadoFinal {
   display: none;
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 1.8rem;
   color: #00ffcc;
   text-align: center;
 }
-
