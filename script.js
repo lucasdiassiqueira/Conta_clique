@@ -56,4 +56,7 @@ restartBtn.addEventListener("click", () => {
 });
 
 // Início automático
-startGame();
+window.onload = () => {
+  startGame();
+};
+
