@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", () => {
+window.onload = () => {
   const clickBox = document.getElementById("click-box");
   const timeDisplay = document.getElementById("time");
   const countDisplay = document.getElementById("count");
@@ -56,8 +56,6 @@ window.addEventListener("DOMContentLoaded", () => {
     startGame();
   });
 
-  // ⏳ Iniciar apenas quando o DOM estiver 100% carregado
+  // Início do jogo após o carregamento completo da página
   startGame();
-});
-
-
+};
