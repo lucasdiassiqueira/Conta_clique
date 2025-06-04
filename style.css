@@ -1,83 +1,105 @@
 body {
-  background-color: black;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white;
   margin: 0;
-  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   overflow: hidden;
+  color: white;
+}
+
+.container {
   position: relative;
-}
-
-#fundo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 90vw;
-  height: 90vh;
-  background-color: white;
+  width: 80vw;
+  height: 80vh;
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
 }
 
-#temporizador {
+#game-area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#click-box {
   position: absolute;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 5rem;
+  width: 120px;
+  height: 60px;
+  background-color: #ff4b5c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
   font-weight: bold;
-  z-index: 2;
-}
-
-#contador {
-  position: absolute;
-  top: 110px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 4rem;
-  z-index: 2;
-}
-
-#botaoClique {
-  position: absolute;
-  padding: 20px 40px;
-  font-size: 1.5rem;
-  background-color: rgb(50, 122, 205);
-  color: black;
-  border: none;
-  border-radius: 12px;
   cursor: pointer;
-  z-index: 3;
-  transition: top 0.3s ease, left 0.3s ease;
-  box-shadow: 0 0 20px lime;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-#reiniciar {
+.hud {
   position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1.2em;
+}
+
+#final-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+}
+
+.message-box {
+  background: white;
+  color: #333;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+}
+
+.message-box h2 {
+  margin: 0 0 10px;
+}
+
+.message-box p {
+  font-size: 1.4em;
+}
+
+#restart-btn {
+  margin-top: 20px;
   padding: 10px 20px;
-  font-size: 1.2rem;
-  background-color: #222;
+  background-color: #764ba2;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  z-index: 2;
-  box-shadow: 0 0 10px #444;
+  font-size: 1em;
+  transition: background 0.3s;
 }
 
-#resultadoFinal {
-  position: absolute;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2rem;
-  color: #00ffcc;
-  text-align: center;
-  z-index: 2;
-  display: none;
+#restart-btn:hover {
+  background-color: #5a3d91;
 }
+

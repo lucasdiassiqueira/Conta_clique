@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Desafio de Cliques</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Clique</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <div id="fundo"></div>
-
-  <div id="temporizador">00:10</div>
-  <div id="contador">0</div>
-
-  <button id="botaoClique">Clique!</button>
-  <button id="reiniciar">🔁 Reiniciar</button>
-
-  <div id="resultadoFinal"></div>
-
+  <div class="container">
+    <div id="game-area">
+      <div id="click-box">Clique!</div>
+    </div>
+    <div class="hud">
+      <div class="timer">Tempo: <span id="time">10</span>s</div>
+      <div class="score">Cliques: <span id="count">0</span></div>
+    </div>
+    <div id="final-message" class="hidden">
+      <div class="message-box">
+        <h2>Parabéns!</h2>
+        <p>Você clicou <span id="final-count"></span> vezes!</p>
+        <button id="restart-btn">Jogar novamente</button>
+      </div>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
+
