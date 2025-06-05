@@ -3,27 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jogo de Clique</title>
+  <title>Contador Bomba Industrial</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <div id="game-area">
-      <div id="click-box">Clique!</div>
-    </div>
-    <div class="hud">
-      <div class="timer">Tempo: <span id="time">10</span>s</div>
-      <div class="score">Cliques: <span id="count">0</span></div>
-    </div>
-    <div id="final-message" class="hidden">
-      <div class="message-box">
-        <h2>Parabéns!</h2>
-        <p>Você clicou <span id="final-count"></span> vezes!</p>
-        <button id="restart-btn">Jogar novamente</button>
+  <div class="background">
+    <div class="container">
+      <h1>Bomba de Encher</h1>
+      <div class="machine">
+        <div class="tube">
+          <div id="fill" class="fill"></div>
+        </div>
+        <div class="hose"></div>
       </div>
+      <button id="clickBtn">Clique Aí!</button>
     </div>
   </div>
   <script src="script.js"></script>
 </body>
 </html>
+
 

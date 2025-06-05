@@ -1,61 +1,31 @@
-window.onload = () => {
-  const clickBox = document.getElementById("click-box");
-  const timeDisplay = document.getElementById("time");
-  const countDisplay = document.getElementById("count");
-  const finalMessage = document.getElementById("final-message");
-  const finalCount = document.getElementById("final-count");
-  const restartBtn = document.getElementById("restart-btn");
-  const gameArea = document.getElementById("game-area");
+const clickBtn = document.getElementById('clickBtn');
+const fill = document.getElementById('fill');
 
-  let count = 0;
-  let timeLeft = 10;
-  let interval;
+let fillPercent = 0;
+let clickPower = 100 / 15; // 15 cliques para encher
+let decayRate = 0.3;       // velocidade de esvaziamento
+let interval;
 
-  function moveBoxRandomly() {
-    const areaWidth = gameArea.clientWidth;
-    const areaHeight = gameArea.clientHeight;
-    const boxWidth = clickBox.offsetWidth;
-    const boxHeight = clickBox.offsetHeight;
+clickBtn.addEventListener('click', () => {
+  fillPercent += clickPower;
+  if (fillPercent > 100) fillPercent = 100;
+  updateFill();
+});
 
-    const randomX = Math.random() * (areaWidth - boxWidth);
-    const randomY = Math.random() * (areaHeight - boxHeight);
-
-    clickBox.style.left = `${randomX}px`;
-    clickBox.style.top = `${randomY}px`;
+function updateFill() {
+  fill.style.height = fillPercent + '%';
+  if (fillPercent >= 100) {
+    clearInterval(interval);
+    alert('Parabéns! Você encheu a bomba!');
   }
+}
 
-  function startGame() {
-    count = 0;
-    timeLeft = 10;
-    countDisplay.textContent = count;
-    timeDisplay.textContent = timeLeft;
-    finalMessage.classList.add("hidden");
-    clickBox.style.display = "flex";
-    moveBoxRandomly();
-
-    interval = setInterval(() => {
-      timeLeft--;
-      timeDisplay.textContent = timeLeft;
-
-      if (timeLeft <= 0) {
-        clearInterval(interval);
-        clickBox.style.display = "none";
-        finalCount.textContent = count;
-        finalMessage.classList.remove("hidden");
-      }
-    }, 1000);
+function decay() {
+  if (fillPercent > 0) {
+    fillPercent -= decayRate;
+    if (fillPercent < 0) fillPercent = 0;
+    updateFill();
   }
+}
 
-  clickBox.addEventListener("click", () => {
-    count++;
-    countDisplay.textContent = count;
-    moveBoxRandomly();
-  });
-
-  restartBtn.addEventListener("click", () => {
-    startGame();
-  });
-
-  // Início do jogo após o carregamento completo da página
-  startGame();
-};
+interval = setInterval(decay, 100);
