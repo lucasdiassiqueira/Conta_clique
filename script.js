@@ -5,7 +5,7 @@ const restartScreen = document.getElementById('restartScreen');
 const restartBtn = document.getElementById('restartBtn');
 
 let fillPercent = 0;
-let clickPower = 100 / 50; // agora são 50 cliques
+let clickPower = 100 / 50;
 let decayRate = 0.3;
 let interval;
 let totalClicks = 0;
