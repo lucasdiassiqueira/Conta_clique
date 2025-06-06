@@ -7,7 +7,7 @@ body, html {
 }
 
 .background {
-  background: url('img/fundo.png') no-repeat center center/cover;
+  background: url('fundo.png') no-repeat center center / cover;
   height: 100vh;
   display: flex;
   align-items: center;
