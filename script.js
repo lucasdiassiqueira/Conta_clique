@@ -5,7 +5,7 @@ const restartScreen = document.getElementById('restartScreen');
 const restartBtn = document.getElementById('restartBtn');
 
 let fillPercent = 0;
-let clickPower = 100 / 50; // 50 cliques para encher
+let clickPower = 100 / 50; // agora são 50 cliques
 let decayRate = 0.3;
 let interval;
 let totalClicks = 0;
@@ -22,7 +22,7 @@ function updateFill() {
   clickCountText.textContent = `Cliques: ${totalClicks}`;
   if (fillPercent >= 100) {
     clearInterval(interval);
-    showRestartScreen();
+    restartScreen.style.display = 'flex';
   }
 }
 
@@ -34,10 +34,6 @@ function decay() {
   }
 }
 
-function showRestartScreen() {
-  restartScreen.style.display = 'flex';
-}
-
 restartBtn.addEventListener('click', () => {
   fillPercent = 0;
   totalClicks = 0;
@@ -47,4 +43,3 @@ restartBtn.addEventListener('click', () => {
 });
 
 interval = setInterval(decay, 100);
-
