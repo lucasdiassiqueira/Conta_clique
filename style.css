@@ -61,28 +61,6 @@ h1 {
   height: 300px;
 }
 
-.pipe-horizontal {
-  width: 60px;
-  height: 20px;
-  background: #5c4033;
-  border: 2px solid #2f1b0c;
-  border-radius: 10px;
-  position: absolute;
-  top: 60px;
-  left: 0;
-}
-
-.pipe-vertical {
-  width: 20px;
-  height: 150px;
-  background: #5c4033;
-  border: 2px solid #2f1b0c;
-  border-radius: 10px;
-  position: absolute;
-  top: 80px;
-  left: 40px;
-}
-
 button {
   background: #b86b00;
   color: white;
