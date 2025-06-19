@@ -21,9 +21,11 @@ function updateFill() {
   fill.style.height = fillPercent + '%';
   clickCountText.textContent = `Cliques: ${totalClicks}`;
   if (fillPercent >= 100) {
-    clearInterval(interval);
-    restartScreen.style.display = 'flex';
-  }
+  clearInterval(interval);
+  const finalClickCount = document.getElementById('finalClickCount');
+  finalClickCount.textContent = `Cliques: ${totalClicks} `;
+  restartScreen.style.display = 'flex';
+}
 }
 
 function decay() {
